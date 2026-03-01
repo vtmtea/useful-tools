@@ -36,6 +36,6 @@ jobs:
           SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_KEY }}
           ARGS: "-rlgoDzvc -i --delete"
           SOURCE: "dist/"
-          REMOTE_HOST: ${{ secrets.SERVER_HOST }}
-          REMOTE_USER: ${{ secrets.SERVER_USER }}
+          REMOTE_HOST: ${{ vars.SERVER_HOST }}
+          REMOTE_USER: ${{ vars.SERVER_USER }}
           TARGET: "/wwwroot/useful-tools"
