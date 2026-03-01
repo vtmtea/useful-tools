@@ -10,24 +10,26 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # 1. 拉取代码
       - name: Checkout code
         uses: actions/checkout@v4
 
-      # 2. 安装 Node.js 环境
+      - name: Install pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: 9
+          run_install: false
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '24'
           cache: 'pnpm'
 
-      # 3. 安装依赖并构建项目
       - name: Install dependencies and build
         run: |
-          pnpm install
+          pnpm install --frozen-lockfile
           pnpm run build
 
-      # 4. 使用 SSH 部署到远程服务器
       - name: Deploy to Server
         uses: easingthemes/ssh-deploy@main
         env:
