@@ -16,6 +16,10 @@ import Base64Converter from './components/Base64Converter';
 import ImageCompressor from './components/ImageCompressor';
 import SvgConverter from './components/SvgConverter';
 import PasswordGenerator from './components/PasswordGenerator';
+import JsonFormatter from './components/JsonFormatter';
+import JwtDecoder from './components/JwtDecoder';
+import DiffChecker from './components/DiffChecker';
+import UrlEncoder from './components/UrlEncoder';
 
 const tools = [
   {
@@ -59,6 +63,34 @@ const tools = [
     description: 'Generate highly secure, random passwords with customizable parameters.',
     icon: <Lock size={28} />,
     category: 'Security'
+  },
+  {
+    id: 'json-formatter',
+    title: 'JSON Formatter',
+    description: 'Format, validate, and minify JSON strings with syntax highlighting.',
+    icon: <Code size={28} />,
+    category: 'Developer Tools'
+  },
+  {
+    id: 'jwt-decoder',
+    title: 'JWT Decoder',
+    description: 'Securely decode JSON Web Tokens entirely in your browser without sending to a server.',
+    icon: <Lock size={28} />,
+    category: 'Developer Tools'
+  },
+  {
+    id: 'diff-checker',
+    title: 'Diff Checker',
+    description: 'Compare two text blocks and easily spot the added, removed, or changed parts.',
+    icon: <FileText size={28} />,
+    category: 'Developer Tools'
+  },
+  {
+    id: 'url-encoder',
+    title: 'URL Encoder/Decoder',
+    description: 'Easily encode or decode URL strings and query parameters.',
+    icon: <Code size={28} />,
+    category: 'Developer Tools'
   }
 ];
 
@@ -79,11 +111,20 @@ function App() {
         return <SvgConverter onBack={() => setCurrentTool(null)} />;
       case 'password-gen':
         return <PasswordGenerator onBack={() => setCurrentTool(null)} />;
+      case 'json-formatter':
+        return <JsonFormatter onBack={() => setCurrentTool(null)} />;
+      case 'jwt-decoder':
+        return <JwtDecoder onBack={() => setCurrentTool(null)} />;
+      case 'diff-checker':
+        return <DiffChecker onBack={() => setCurrentTool(null)} />;
+      case 'url-encoder':
+        return <UrlEncoder onBack={() => setCurrentTool(null)} />;
       default:
         return (
           <div className="tool-placeholder">
-            <h2 className="title" style={{ fontSize: '2rem' }}>Coming Soon</h2>
-            <p className="subtitle">This tool is currently under development.</p>
+            <Settings2 size={64} style={{ color: 'var(--primary)', marginBottom: '1rem', opacity: 0.5 }} />
+            <h2 className="title" style={{ fontSize: '2rem' }}>Development In Progress</h2>
+            <p className="subtitle">This tool is currently under development. Please check back later!</p>
             <button
               className="generate-btn"
               style={{ margin: '2rem auto' }}
