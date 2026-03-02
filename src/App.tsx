@@ -11,6 +11,11 @@ import {
 } from 'lucide-react';
 import './App.css';
 import ImageToPdf from './components/ImageToPdf';
+import PdfToImage from './components/PdfToImage';
+import Base64Converter from './components/Base64Converter';
+import ImageCompressor from './components/ImageCompressor';
+import SvgConverter from './components/SvgConverter';
+import PasswordGenerator from './components/PasswordGenerator';
 
 const tools = [
   {
@@ -64,6 +69,16 @@ function App() {
     switch (currentTool) {
       case 'image-to-pdf':
         return <ImageToPdf onBack={() => setCurrentTool(null)} />;
+      case 'pdf-to-image':
+        return <PdfToImage onBack={() => setCurrentTool(null)} />;
+      case 'base64-converter':
+        return <Base64Converter onBack={() => setCurrentTool(null)} />;
+      case 'image-compressor':
+        return <ImageCompressor onBack={() => setCurrentTool(null)} />;
+      case 'svg-converter':
+        return <SvgConverter onBack={() => setCurrentTool(null)} />;
+      case 'password-gen':
+        return <PasswordGenerator onBack={() => setCurrentTool(null)} />;
       default:
         return (
           <div className="tool-placeholder">
